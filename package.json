@@ -1,9 +1,9 @@
 {
   "name": "project-three-back",
+  "version": "1.0.0",
   "engines": {
     "node": "14.17.6"
   },
-  "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {

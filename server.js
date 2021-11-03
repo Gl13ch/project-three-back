@@ -11,12 +11,10 @@ const PORT = process.env.PORT || 3003
 //Database
 const MONGODB_URI  = process.env.MONGODB_URI
 
-//connect to mongo
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true })
-    .then(() => console.log("Connection Successful"))
-    .catch(err => console.log(err));
+// Connect to Mongo
+mongoose.connect(MONGODB_URI  ,  { useNewUrlParser: true});
 
-//error messages
+// Error / success
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
 db.on('connected', () => console.log('mongo connected: ', MONGODB_URI));
 db.on('disconnected', () => console.log('mongo disconnected'));
