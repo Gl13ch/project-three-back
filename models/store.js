@@ -11,4 +11,4 @@ const storeSchema = new mongoose.Schema(
 )
 
 const Store = mongoose.model('Store', storeSchema)
-module.exports = Games
+module.exports = Store
