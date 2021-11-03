@@ -9,8 +9,10 @@ require('dotenv').config()
 const PORT = process.env.PORT || 3003
 
 //Database
-const MONGODB_URI = process.env.MONGODB_URI;
-mongoose.connect(MONGODB_URI);
+const MONGODB_URI  = process.env.MONGODB_URI
+
+//connect to mongo
+mongoose.connect(MONGODB_URI  ,  { useNewUrlParser: true});
 
 //error messages
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
@@ -20,6 +22,7 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 //middleware
 app.use(express.json())
 app.use(cors())
+app.use(express.urlencoded({ extended: true }))
 
 //controllers
 const storeController = require('./controllers/store.js');
