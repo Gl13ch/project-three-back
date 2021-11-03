@@ -3,9 +3,10 @@ const router = express.Router()
 const Store = require('../models/store.js')
 
 router.get('/', (req,res) => {
-  Store.find((err, foundProducts) => {
-    res.json(foundProducts)
-  })
+  // Store.find((err, foundProducts) => {
+  //   res.json(foundProducts)
+  // })
+  res.send('hello')
 })
 
 router.post('/', (req,res) => {
