@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3003
 const MONGODB_URI  = process.env.MONGODB_URI
 
 // Connect to Mongo
-mongoose.connect(MONGODB_URI  ,  { useNewUrlParser: true});
+mongoose.connect(MONGODB_URI);
 
 // Error / success
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
@@ -22,7 +22,6 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 //middleware
 app.use(express.json())
 app.use(cors())
-app.use(express.urlencoded({ extended: true }))
 
 //controllers
 const storeController = require('./controllers/store.js');
@@ -37,8 +36,3 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log('Listening on...', PORT);
 })
-
-mongoose.connect('mongodb://localhost:27017/proj3')
-mongoose.connection.once('open', ()=>{
-    console.log('connected to mongod...');
-});
