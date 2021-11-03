@@ -25,6 +25,11 @@ app.use(cors())
 const storeController = require('./controllers/store.js');
 app.use('/store', storeController)
 
+//Route
+app.get('/', (req, res) => {
+    res.redirect('/store')
+})
+
 //Listeners
 app.listen(PORT, () => {
   console.log('Listening on...', PORT);
