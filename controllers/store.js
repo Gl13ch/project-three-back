@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const Store = require('../models/store.js')
 
 router.get('/', (req,res) => {
-  Store.find((err, productList) => {
+  Store.find((err, foundProducts) => {
     res.json(foundProducts)
   })
 })
@@ -17,7 +17,7 @@ router.post('/', (req,res) => {
 
 router.delete('/:id', (req,res) => {
   Store.findByIdAndRemove(req.params.id, (err,deletedProducts) => {
-    res.json(updatedProducts)
+    res.json(deletedProducts)
   })
 })
 
