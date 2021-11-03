@@ -18,6 +18,11 @@ db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
 db.on('connected', () => console.log('mongo connected: ', MONGODB_URI));
 db.on('disconnected', () => console.log('mongo disconnected'));
 
+//controllers
+const storeController = require('./controllers/store.js');
+app.use('/store', storeController)
+
+
 app.listen(PORT, () => {
   console.log('Listening on...', PORT);
   // console.log(process.env);
