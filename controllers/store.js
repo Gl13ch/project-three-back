@@ -3,7 +3,7 @@ const router = express.Router()
 const Store = require('../models/store.js')
 
 router.get('/', (req,res) => {
-  Store.find((err, foundProducts) => {
+  Store.find({}, (err, foundProducts) => {
     res.json(foundProducts)
   })
 })
