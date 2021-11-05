@@ -25,9 +25,9 @@ app.use(cors())
 
 //controllers
 const storeController = require('./controllers/store.js');
+const userController = require('./controllers/profiles.js');
+app.use('/users', userController)
 app.use('/store', storeController)
-const profileController = require('./controllers/profiles.js');
-app.use('/profiles', profileController)
 
 //Route
 app.get('/', (req, res) => {
