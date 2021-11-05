@@ -1,15 +1,15 @@
 const bcrypt = require('bcrypt')
 const express = require('express')
-const user = express.Router()
-const User = require('../models/user.js')
+const profile = express.Router()
+const Profile = require('../models/profile.js')
 
 // user.get('/', (req, res) => {
 //   res.json('Hello World')
 // })
 
-user.post('/createaccount', (req,res) => {
+profile.post('/createaccount', (req,res) => {
   req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
-  User.create(req.body, (err, createdUser) => {
+  Profile.create(req.body, (err, createdUser) => {
     if(err){
       console.log(err);
       res.json(err.message)
@@ -20,9 +20,9 @@ user.post('/createaccount', (req,res) => {
   })
 })
 
-user.put('/login', (req,res) => {
+profile.put('/login', (req,res) => {
   console.log(req.body)
-  User.findOne({username: req.body.username}, (err,foundUser) =>{
+  Profile.findOne({username: req.body.username}, (err,foundUser) =>{
     if(err){
       res.json('Please try again')
     } else {
@@ -37,4 +37,4 @@ user.put('/login', (req,res) => {
   })
 })
 
-module.exports = user
+module.exports = profile
