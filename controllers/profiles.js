@@ -3,9 +3,11 @@ const express = require('express')
 const user = express.Router()
 const Profile = require('../models/profile.js')
 
-// user.get('/', (req, res) => {
-//   res.json('Hello World')
-// })
+user.get('/', (req,res) => {
+  Profile.find({}, (err, foundUser) => {
+    res.json(foundUser)
+  })
+})
 
 user.post('/createaccount', (req,res) => {
   req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
