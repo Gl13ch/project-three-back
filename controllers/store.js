@@ -2,13 +2,13 @@ const express = require('express')
 const router = express.Router()
 const Store = require('../models/store.js')
 
-const isAuthenticated = (req,res, next) => {
-  if (req.session.currentUser) {
-    return next()
-  } else {
-    res.redirect('/store')
-  }
-}
+// const isAuthenticated = (req,res, next) => {
+//   if (req.session.currentUser) {
+//     return next()
+//   } else {
+//     res.redirect('/store')
+//   }
+// }
 
 router.get('/', (req,res) => {
   Store.find({}, (err, foundProducts) => {
@@ -16,13 +16,13 @@ router.get('/', (req,res) => {
   })
 })
 
-router.post('/', isAuthenticated, (req,res) => {
+router.post('/', (req,res) => {
   Store.create(req.body, (err, createdProducts) => {
     res.json(createdProducts)
   })
 })
 
-router.delete('/:id', isAuthenticated, (req,res) => {
+router.delete('/:id', (req,res) => {
   Store.findByIdAndRemove(req.params.id, (err,deletedProducts) => {
     res.json(deletedProducts)
   })
