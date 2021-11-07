@@ -7,6 +7,7 @@ const storeSchema = new mongoose.Schema(
     description: String,
     price: Number,
     qty: Number,
+    sellername: String
   }
 )
 
